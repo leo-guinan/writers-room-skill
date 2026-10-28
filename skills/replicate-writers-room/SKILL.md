@@ -153,7 +153,7 @@ Without a GitHub account, use the repo's "Capability request" issue form.
 
 ## Ground rules
 
-- **Read before you assert.** if the record doesn't say something happened, it didn't happen yet. This is the room's own rule ("never invent history"), and it applies to you.
+- **Read before you assert.** If the record doesn't say something happened, it didn't happen yet. This is the room's own rule ("never invent history"), and it applies to you.
 - **Keep cost honest.** Forecasts go in as forecasts, never as receipts. Unpriced compute is "unknown", not free. Founder time is booked in the ledger, not left out.
 - **Consent travels with the idea.** Respect `reuse`, and never send someone's idea, work or likeness without their agreement.
 - **Actions that leave a trace need the person's say-so.** Creating repos, opening PRs, deploying, and posting ideas to a live room all count.
