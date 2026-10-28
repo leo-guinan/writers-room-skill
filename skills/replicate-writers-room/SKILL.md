@@ -48,12 +48,16 @@ Work through this sheet with whoever you're building for. For each layer, mark *
 | Work | Ideas only move forward, each move with a reason; episodes go `planned → select → write → generate → review → publish → account` | `seed/season-1.json`; `EPISODE_STAGES` and `IDEA_STATUSES` in `src/core/types.ts`; `src/production/loop.ts` |
 | Roles | memory → making → accounting → assembly, with Claude; offline fallback; every run records its role | The role functions in `src/agents/characters.ts` (`remember`, `make`, `account`); the `LLM` interface; `ROOM_MODEL` |
 | Characters | Borges, Leonardo and Agnolo play memory, making and accounting; Yuria hosts | `roles`, `show` and `host` in `cast.json`, plus `characters/<slug>.md` per character |
+| Models | Each character on its own model through OpenRouter; casting chosen by blind tastings | `models` in `cast.json`; `trial run` / `trial reveal` / `trial report`; the `LLM` interface in `src/agents/llm.ts` |
+| Morning episode | A daily Action collects people's changes since yesterday (room repo and attached asset repos) and the day's goals; the room records an episode; astonished at first, ordinary by the end | `assets.json`, `GOALS.md`, `DAILY_SEASON`, `.github/workflows/daily.yml` (local or remote mode), `src/daily/daily.ts` |
 | Scenes | Characters play a card (setting, situation, stakes, stopping rule, turn limit) with private motivations; the showrunner directs; motivations revealed at close; text by default, voice generated per line on request and cached | `scenes/cards/*.json`, `src/scenes/scenes.ts` (director and line prompts), `src/scenes/voice.ts` (`generate()`, `TTS_*`, `VOICE_*`) |
 | Memory | One git repo per principal; generated bible; viewer PRs; extras promoted at 2 appearances, 3 notes and 5 votes | `REPO_PREFIX`, `GITHUB_OWNER`, `cast.json` promotion; the bible tool's `check` rules |
 | Showrunner | Empty episode repo plus plan; projections pinned to commits; gates switch on as load grows | `gates.json` (`activateAt`, thresholds, capacity); `CHECKS` in `src/showrunner/gates.ts`; `SHOWRUNNER_*` and `INTAKE_EPISODE` |
 | Production | Any tools; the room records assets by URI, releases by sha256, and real cost and hours | CLI `episode asset`, `episode release --sha256 --uri`, `ledger add` |
 | Participation | Patrons propose, vote and ask within daily limits; every release ends with an invitation | `PATRON_*` and `IDEAS_PER_IP`; routes in `src/server.ts`; `public/` |
 | Deploy | One small VPS, Docker Compose and Caddy; secrets stay on the server | `deploy/hetzner/install.sh` (`ROOM_REPO`, `GITHUB_OWNER`, `DOMAIN`), or `docker-compose.yml` behind your own proxy |
+
+If what you want is a room for a creative idea with Future Radio's defaults, you can skip most of the sheet: from a checkout of the reference room, run `npm run room -- spawn "<idea>" --name <slug>` (add `--cast memory=…,making=…,accounting=…` for your own characters, and `--publish --owner <you>` to create the repo). Then go through the sheet for anything you want to change.
 
 Write the finished sheet into your fork as `docs/DECISIONS.md`. It is the first thing your own contributors will read.
 
