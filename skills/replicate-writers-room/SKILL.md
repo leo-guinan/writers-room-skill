@@ -34,7 +34,7 @@ Do this before changing anything. The goal is to understand the shape, not to co
    curl -sN $B/api/stream             # live feed (server-sent events); Ctrl-C to stop
    ```
 3. Walk one episode end to end in `future-radio-episode-e10`. It runs from `SHOW_PLAN.md`, through `cuts/I-0001/` (the showrunner's first cut) and `cast/` (character projections pinned to dressing-room commits in `PROVENANCE.json`), to `SCRIPT.md`, `RELEASE.md`, `LEDGER.md` and `assets.json`.
-4. Look at one dressing room, for example `future-radio-dressing-room-agnolo`. Note `history/` (written only by the room), `memory/viewer-notes/` (written by viewers through pull requests), `bible/` (generated), and the CI that enforces this. If you want to talk to the character: `git clone` it, then `npx future-radio-character-bible chat .`.
+4. Look at one dressing room, for example `future-radio-dressing-room-agnolo`. Note `history/` (written only by the room), `memory/viewer-notes/` (written by viewers through pull requests), `bible/` (generated), and the CI that enforces this. If you want to talk to the character: `git clone` it, then `npx future-radio-character-bible chat .`, or follow the voice link in its `bible/BIBLE.md`. `npx future-radio-character-bible agent . --publish` turns any bible into an ElevenLabs voice agent (needs `ELEVENLABS_API_KEY`).
 5. Summarize what you learned in your own words, one line per layer, before moving on. If any layer is unclear, re-read that section of MODEL.md rather than guessing.
 
 ## 2. Decide each layer
