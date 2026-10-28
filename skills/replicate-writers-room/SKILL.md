@@ -28,7 +28,7 @@ Do this before changing anything. The goal is to understand the shape, not to co
    ```bash
    B=https://writers.story.markets
    curl -s $B/healthz                 # log length and hash-chain check
-   curl -s $B/api/room | jq 'keys'    # season, board, scorecard
+   curl -s $B/api/room | jq 'keys'    # season, board, scorecard, roles
    curl -s $B/api/episodes/E10 | jq '{stage, releases, assets: (.assets|length)}'
    curl -s $B/api/events | jq '.[-5:]'  # recent public events
    curl -sN $B/api/stream             # live feed (server-sent events); Ctrl-C to stop
@@ -132,7 +132,7 @@ curl -s https://writers.story.markets/api/ideas -H 'content-type: application/js
 - **`output`:** `scene`, `song`, `episode`, `trailer`, `capability`, `broadcast` or `other`.
 - **`reuse`:** `cc-by`, `show-only` or `ask-first`.
 
-The response gives an `ideaId`. Watch it move through the room with `GET /api/ideas/<id>`.
+The response gives an `ideaId`. Watch it move through the room with `GET /api/ideas/<id>`. To ask a character about it, `POST /api/ideas/<id>/ask` with `{"character": "<slug or role>", "question": "..."}`; roles are `memory`, `making` and `accounting`.
 
 **Request a capability by pull request.** Follow `proposals/README.md`:
 ```bash
@@ -145,7 +145,7 @@ gh pr create --repo leo-guinan/future-radio-writers-room --title "Proposal: <tit
 ```
 When filling it in:
 - The PR adds only the proposal file.
-- Set `layer` to one of the nine layers in MODEL.md.
+- Set `layer` to one of the layers in MODEL.md (`roles` and `characters` are separate values).
 - Set `agent: true` if you wrote it.
 - Leave `status: proposed`; the producer sets it.
 - Fill "Done when" with a concrete stopping rule.
