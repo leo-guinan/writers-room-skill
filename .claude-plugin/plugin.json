@@ -2,7 +2,10 @@
   "name": "writers-room",
   "version": "0.1.0",
   "description": "Learn the Future Radio writers' room model, build your own room with changes at any layer, and propose capabilities back.",
-  "author": { "name": "Leo Guinan" },
+  "author": {
+    "name": "Leo Guinan"
+  },
   "homepage": "https://github.com/leo-guinan/writers-room-skill",
-  "repository": "https://github.com/leo-guinan/writers-room-skill"
+  "repository": "https://github.com/leo-guinan/writers-room-skill",
+  "license": "CC0-1.0"
 }

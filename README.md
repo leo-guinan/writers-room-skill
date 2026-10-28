@@ -62,3 +62,7 @@ Pull requests welcome. Keep the skill in step with `docs/MODEL.md`: if a layer's
 in the room, change it here in the same week. Capability requests for the room itself go to
 [future-radio-writers-room/proposals](https://github.com/leo-guinan/future-radio-writers-room/tree/main/proposals),
 not here.
+
+## License
+
+[CC0 1.0](LICENSE): dedicated to the public domain. Use it, change it, ship it; no permission or credit required.
