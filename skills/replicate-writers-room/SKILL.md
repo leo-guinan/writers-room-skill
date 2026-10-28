@@ -46,8 +46,8 @@ Work through this sheet with whoever you're building for. For each layer, mark *
 | Record | Append-only, hash-chained JSONL; public copy in `seed/room-log.jsonl` | Implement `EventStore` over another store; event `visibility` |
 | Rules | Six locked rules (forecasts aren't receipts; founder hours aren't free; separate historical ledger; released cuts immutable; ceiling needs a decision; three separate signals) | Season seed text, show bible, and the `RuleError` sites in `src/core/room.ts`. Changing them is a fork; say so publicly |
 | Work | Ideas only move forward, each move with a reason; episodes go `planned → select → write → generate → review → publish → account` | `seed/season-1.json`; `EPISODE_STAGES` and `IDEA_STATUSES` in `src/core/types.ts`; `src/production/loop.ts` |
-| Roles | memory → making → accounting → assembly, with Claude; offline fallback; every run recorded | The role functions in `src/agents/characters.ts`; the `LLM` interface; `ROOM_MODEL` |
-| Characters | Borges, Leonardo and Agnolo play memory, making and accounting | `characters/*.md`, `cast.json`; recasting a role means renaming its slug at the sites listed in MODEL.md layer 4 |
+| Roles | memory → making → accounting → assembly, with Claude; offline fallback; every run records its role | The role functions in `src/agents/characters.ts` (`remember`, `make`, `account`); the `LLM` interface; `ROOM_MODEL` |
+| Characters | Borges, Leonardo and Agnolo play memory, making and accounting; Yuria hosts | `roles`, `show` and `host` in `cast.json`, plus `characters/<slug>.md` per character |
 | Memory | One git repo per principal; generated bible; viewer PRs; extras promoted at 2 appearances, 3 notes and 5 votes | `REPO_PREFIX`, `GITHUB_OWNER`, `cast.json` promotion; the bible tool's `check` rules |
 | Showrunner | Empty episode repo plus plan; projections pinned to commits; gates switch on as load grows | `gates.json` (`activateAt`, thresholds, capacity); `CHECKS` in `src/showrunner/gates.ts`; `SHOWRUNNER_*` and `INTAKE_EPISODE` |
 | Production | Any tools; the room records assets by URI, releases by sha256, and real cost and hours | CLI `episode asset`, `episode release --sha256 --uri`, `ledger add` |
@@ -73,7 +73,11 @@ Start your own log rather than importing Future Radio's: your room's record shou
 2. Replace the show:
    - **`seed/season-1.json`:** your episodes (each with `budget.cashCeiling`, `runtimeMinutes` and a deadline), scenes, ideas and forecasts. Keep the structure of the original file.
    - **`characters/show-bible.md`:** your premise, grammar and rules.
-   - **Characters:** cast each role. Write one `characters/<slug>.md` per character: who they are, why they suit the role, and their recurring conflict. List their slugs in `cast.json` under `principals`. The roles are currently bound to the slugs `borges`, `leonardo` and `agnolo` in code. Either keep those slugs for your own characters, or rename them at the sites MODEL.md layer 4 lists, then run `npm test`.
+   - **Characters:** cast each role in `cast.json`:
+     ```json
+     { "show": "Your Show", "host": "your-host", "roles": { "memory": "ada", "making": "grace", "accounting": "ledger-lou" }, "principals": ["ada", "grace", "ledger-lou"] }
+     ```
+     Write one `characters/<slug>.md` per character: who they are, why they suit the role, and their recurring conflict. Each role needs its own character, and the room refuses a `cast.json` that breaks this. Their dressing rooms open on first use. `test/roles.test.ts` shows a recast end to end; adapt it to your cast and keep it passing.
 3. Apply each change from your decision sheet, layer by layer. After each layer, run `npm test` and `npx tsc --noEmit`. Add a test for any rule or gate you change; the existing tests in `test/` show the pattern.
 4. Try it locally:
    ```bash
