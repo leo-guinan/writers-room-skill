@@ -1,6 +1,6 @@
 ---
 name: "replicate-writers-room"
-description: "Study the Future Radio writers' room (an event-sourced public workshop with character agents, dressing-room repos and a gated showrunner) and replicate it with changes per layer, or propose capabilities back to it."
+description: "Study the Future Radio writers' room (an event-sourced public workshop where agents in fixed roles, played by swappable characters, make a show in the open) and replicate it with changes per layer, or propose capabilities back to it."
 ---
 
 # Replicate the writers' room
@@ -153,7 +153,7 @@ Without a GitHub account, use the repo's "Capability request" issue form.
 
 ## Ground rules
 
-- **Open before you edit.** Read before asserting: if the record doesn't say something happened, it didn't happen yet. This is the room's own rule ("never invent history"), and it applies to you.
+- **Read before you assert.** if the record doesn't say something happened, it didn't happen yet. This is the room's own rule ("never invent history"), and it applies to you.
 - **Keep cost honest.** Forecasts go in as forecasts, never as receipts. Unpriced compute is "unknown", not free. Founder time is booked in the ledger, not left out.
 - **Consent travels with the idea.** Respect `reuse`, and never send someone's idea, work or likeness without their agreement.
 - **Actions that leave a trace need the person's say-so.** Creating repos, opening PRs, deploying, and posting ideas to a live room all count.
