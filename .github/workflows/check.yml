@@ -1,0 +1,16 @@
+name: Check skill
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Front matter and links
+        run: |
+          f=skills/replicate-writers-room/SKILL.md
+          head -1 "$f" | grep -qx -- '---' || { echo "SKILL.md must start with front matter"; exit 1; }
+          grep -q '^name: ' "$f" && grep -q '^description: ' "$f" || { echo "name and description are required"; exit 1; }
+          python3 -c "import json;[json.load(open(p)) for p in ('.claude-plugin/plugin.json','.claude-plugin/marketplace.json')]"
+          for u in https://writers.story.markets/healthz https://github.com/leo-guinan/future-radio-writers-room/blob/main/docs/MODEL.md; do
+            curl -fsS -o /dev/null "$u" || { echo "unreachable: $u"; exit 1; }
+          done

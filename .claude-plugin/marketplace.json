@@ -1,0 +1,11 @@
+{
+  "name": "writers-room",
+  "owner": { "name": "Leo Guinan" },
+  "plugins": [
+    {
+      "name": "writers-room",
+      "source": "./",
+      "description": "Learn the Future Radio writers' room model, build your own room with changes at any layer, and propose capabilities back."
+    }
+  ]
+}
